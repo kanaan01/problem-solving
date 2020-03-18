@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+int sig(int a[],int size , int v)
+{
+    int x=0;
+  for(int i=0;i<size;i++)
+  {
+
+    if(a[i]==v)
+      x++;
+  }
+     return x;
+
+}
+int main(void)
+{
+  int a[5];
+  int v;
+  for(int i=0;i<5;i++) cin >> a[i];
+  cin >> v;
+ cout <<  sig(a , 5, v); 
+}
