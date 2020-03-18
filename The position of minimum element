@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+int min(int a[],int size)
+{
+  int min=0;
+  for(int i=0;i<5;i++)
+  {
+    if(a[i]<=a[min])
+      min=a[i+1];
+  }
+  return min+1;
+}
+int main(void)
+{
+  int a[5];
+  for(int i=0;i<5;i++) cin >> a[i];
+  cout << min(a, 5);
+  return 0;
+ }
