@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+string sig(string s)
+{
+  if(s.substr(8,1)=="A"&& s.substr(0,2)=="12") s=s.replace(0,2,"00");
+  if(s.substr(8,1) =="P")
+  {
+    if      (s.substr(0,2)=="01") s=s.replace(0,2,"13");
+    else if (s.substr(0,2)=="02") s=s.replace(0,2,"14");
+    else if (s.substr(0,2)=="03") s=s.replace(0,2,"15");
+    else if (s.substr(0,2)=="04") s=s.replace(0,2,"16");
+    else if (s.substr(0,2)=="05") s=s.replace(0,2,"17");
+    else if (s.substr(0,2)=="06") s=s.replace(0,2,"18");
+    else if (s.substr(0,2)=="07") s=s.replace(0,2,"19");
+    else if (s.substr(0,2)=="08") s=s.replace(0,2,"20");
+    else if (s.substr(0,2)=="09") s=s.replace(0,2,"21");
+    else if (s.substr(0,2)=="10") s=s.replace(0,2,"22");
+    else if (s.substr(0,2)=="11") s=s.replace(0,2,"23");
+  }
+  s=s.erase(8,2);
+  return s;
+}
+int main()
+{
+  string s;
+  cin>>s;
+  cout <<sig(s);
+}
