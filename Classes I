@@ -1,0 +1,73 @@
+#include<iostream>
+using namespace std;
+class MyMath
+{
+  private:
+  double num1;
+  double num2;
+  public:
+void setnum1(double n1)
+{
+  num1=n1;
+}
+ void setnum2(double n2)
+ {
+   num2=n2;
+ }
+ double getnum1()
+ {
+   return num1;
+ }
+ double getnum2 ()
+ {
+   return num2;
+ }
+ double add(){return num1+num2;}
+ double sub() {return num1-num2;}
+ double mul() {return num1*num2;}
+ double div () {if (num2 !=0)
+                return num1/num2;
+                else 
+                  return INT8_MAX;
+                }
+ 
+ int rev () {
+   int s=(int)num1;
+   int f=0;
+   while(s){
+     f+=s%10;
+     s/=10;
+     if(s!=0)
+       f*=10;
+     
+   }
+             return f;
+             }
+ 
+ bool rat () {
+   return ((int)(num2)!=num2);
+ }
+ 
+
+};
+
+int main()
+{
+  double n1,n2;
+ cin>>n1>>n2;
+ MyMath a;
+ a.setnum1(n1);
+ a.setnum2(n2);
+ cout<<n1 <<" + "<<a.getnum2()<<" = "<<a.add()<<endl;
+ cout<<n1 <<" - "<<a.getnum2()<<" = "<<a.sub()<<endl;
+ cout<<n1 <<" * "<<a.getnum2()<<" = "<<a.mul()<<endl;
+ double r=a.div();
+
+ if (r==INT8_MAX) cout<<"you try to divide by zero"<<endl;
+ else cout<<n1 <<" / "<<a.getnum2()<<" = "<<a.div()<<endl;
+ cout<<"the reverse of "<<n1<<" is "<<a.rev()<<endl;
+ if (a.rat()&&n2 !=0)
+ cout<<"yes "<<n2<<" is rational\n";
+ else cout<<"no "<<n2<<" is not rational"<<endl; 
+return 0;
+}
