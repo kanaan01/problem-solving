@@ -1,0 +1,11 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+int main(void)
+{
+  int a,b;
+  cin >> a >> b;
+  float v=sqrt(a*a+b*b);
+  cout << setprecision(2) << fixed << "Saved Distance = " << (a+b)-v  << " km";
+}
