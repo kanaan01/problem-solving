@@ -1,0 +1,95 @@
+/*Write a program that defines                                                                              
+
+a struct Course with the following members                        
+string variable name for the course name
+Integer variable grade for the course.
+ 
+
+a struct Student with the following members:
+String variable name indicating for student name.
+An array of type course struct of size 4.
+print: a function that prints the information for the student.
+ 
+
+3. read: a void function that reads the data of the student variable (note: the grade must between 35-100. Assume that the user entered different courses).
+
+ 
+
+4. getAvg: a function that computes and returns the student gpa (assume that all courses of 3 credit).*/
+//
+#include <iostream>
+using namespace std;
+struct course
+{
+   string name;
+   int grade;
+};
+struct student
+{
+  string name;
+  course arr[4];
+  void print()
+  {
+    cout<< "student name : "<< name<< endl;
+  for(int i=0 ;i<4 ;i++)
+  {
+    cout<<"course "<< i+1 <<" name : "<< arr[i].name <<endl;
+    cout<<"course "<< i+1 <<" grade : "<< arr[i].grade <<endl;
+  }
+  }
+};
+
+
+
+
+void read(student &s){
+
+  cin>> s.name;
+
+  for(int i=0 ;i<4 ;i++){
+
+    cin>>s.arr[i].name;
+
+    cin>>s.arr[i].grade;
+
+    while(s.arr[i].grade< 35 || s.arr[i].grade>100)
+
+    {
+
+      cout<<"invalid grade. the grade must be between 35 and 100 "<<endl;
+
+      cin>>s.arr[i].grade;
+
+    }
+
+  }
+
+}
+
+
+
+double getavg(int x1 ,int x2 ,int x3 ,int x4 ){
+
+int sum = x1 + x2 + x3 + x4;
+
+  return sum/4.0;
+
+  
+
+}
+
+
+
+int main()
+
+{ 
+
+  student std;
+
+  read(std);
+
+  std.print();
+
+  cout<< "AVG = " <<getavg(std.arr[0].grade , std.arr[1].grade ,std.arr[2].grade ,std.arr[3].grade ) <<endl;
+
+    }
