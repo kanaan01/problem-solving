@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int a,b,c;
+  cin >> a >> b >> c;
+ int x1=a*b*c;
+  int x2=(a+b)*c;
+ 
+
+  cout << max(x1,x2);
+  return 0;
+
+}
