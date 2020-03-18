@@ -1,0 +1,59 @@
+/*In the main do the following:
+
+1) Declare an int variable (x) with initial value entered by user.
+
+2) Declare two int pointers p1 to point to (x) variable and p2 with initial values to point to nothing.
+
+3) Print the content of (x) and its address in the memory using the variable name.
+
+4) Print the content of (x) and its address in the memory using the pointer p1.
+
+5) Make p2 points to a dynamic memory location and read its value from user.
+
+6) Print the content, the address and the value that points to by the pointer p2.
+
+8) Declare a double pointer p3 to point to a dynamic array of a size 5.
+
+9) Initialize the dynamic array using for loop with values entered by the user.
+
+10) Print the content of the array.
+
+.12) Define a function double AVG (double * p) that return the average of the array where p point to the array already implemented.
+
+13) Define a function int * power(int *p1, int * & p2) that return pointer to value of *p1 ^ *p2*/
+//
+#include<iostream>
+#include<string>
+#include <cmath>
+using namespace std;
+double AVG (double * p){
+float j=0;
+for (int i=0; i < 5; ++i)
+  j+=p[i];
+return j/5;
+}
+int * power(int *p1, int * & p2){
+  int *we=new int;
+  *we=pow(*p1,*p2);
+return we;
+}
+int main()
+{
+  int x,r;
+  cin >> x;
+  int *p1=&x,*p2;
+  cout << x << " " << &x << endl;
+    cout << x << " " << p1 << endl;
+    p2= new int;
+    cin >> *p2;
+  cout << p2 <<" " <<&p2 <<" "<< *p2 << endl;
+  double *p3= new double[5];
+  for (int i=0 ;i < 5; ++i){
+    cin >> p3[i];
+    cout << p3[i] << " ";
+  }
+  cout <<endl <<  "AVG of array is " << AVG(p3)  << " " << endl;
+  cout << "the result of power is: " <<*(power(p1,p2))<< endl;
+
+return 0;
+}
