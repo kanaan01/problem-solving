@@ -1,0 +1,12 @@
+#include <iostream>
+using namespace std;
+int main(void)
+{
+  int a;
+  cin >>a;
+  int v=a/1000;
+  int z=a%10;
+   if (z+v>6) cout <<"Ahmad is the winner";// << endl;
+  else 
+    cout <<"Sami is the winner";//;// << endl;
+}
