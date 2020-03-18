@@ -1,0 +1,11 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main()
+{
+  int a,b,c,d;
+  cin >> a >> b >> c >> d;
+  cout << setprecision(2) << fixed << "The total cost of grass = " << ((a*b)-(c*d))*2.5;
+  
+  return 0;
+}
