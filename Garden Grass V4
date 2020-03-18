@@ -1,0 +1,8 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+  int a,b;
+  cin >>a >> b;
+  cout << "The cost of plant grass around the pool is " << ((0.433*a*a)-(0.433*b*b))*2 ;
+}
