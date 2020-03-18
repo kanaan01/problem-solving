@@ -1,0 +1,15 @@
+#include<iostream>
+#include <cmath>
+using namespace std;
+int main() {
+  int a,b,c;
+  cin >> a >> b >> c;
+  int x1=fabs(b-a)+fabs(c-a);
+  int x2=fabs(a-b)+fabs(c-b);
+  int x3=fabs(a-c)+fabs(b-c);
+  cout << min(x1,min(x2,x3));
+
+ 
+
+  return 0;
+}
