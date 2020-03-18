@@ -1,0 +1,9 @@
+#include <iostream>
+#include<iomanip>
+using namespace std;
+int main(){
+  float a,b;
+  cin >>a >> b;
+  cout << setprecision(2) << fixed << "The cost of plant grass around the pool is " << ((3.14*a*a)-(3.14*b*b))*1.5;
+  return 0;
+}
