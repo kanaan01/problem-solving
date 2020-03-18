@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+int main(void)
+{
+  char f;
+  int n;
+  cin>>f>>n;
+  if(f=='a' || f=='c' || f=='e' || f=='g'){
+    if(n%2==0) cout << "White";
+    else       cout << "Black";
+  }
+  if(f=='b' || f=='d' || f=='f' || f=='h'){
+    if(n%2==0)  cout << "Black";
+    else        cout << "White";
+  }
+  return 0;
+
+}
