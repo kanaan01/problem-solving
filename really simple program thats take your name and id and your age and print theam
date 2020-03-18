@@ -1,0 +1,145 @@
+// really simple program thats take your name and id and your age and print theam 
+
+#include <iostream>
+
+using namespace std;
+
+class person{
+
+private:
+
+int age;
+
+string firstname;
+
+string lastname;
+
+int std;
+
+public:
+
+void setage(int a)
+
+{
+
+    age=a;
+
+}
+
+void setfirstname(string a)
+
+{
+
+    firstname=a;
+
+}
+
+void setlastname(string a)
+
+{
+
+    lastname=a;
+
+}
+
+void setstd(int a)
+
+{
+
+    std=a;
+
+}
+
+int getage()
+
+{
+
+    return age;
+
+}
+
+string getfirstname()
+
+{
+
+    return firstname;
+
+}
+
+string getlastname()
+
+{
+
+    return lastname;
+
+}
+
+int getstd()
+
+{
+
+    return std;
+
+}
+
+void print()
+
+{
+
+    cout << getage() <<endl;
+
+    cout << getlastname() << ", " << getfirstname() <<endl;
+
+    cout << getstd() << endl;
+
+    cout<<getage()<<","<<getlastname()<<","<<getfirstname()<<","<< getstd() <<endl;
+
+    cout <<"<          \"Dr.malak assigemint \"         >"  << endl;
+
+}
+
+};
+
+int main()
+
+{
+
+    int a;
+
+    string b,c;
+
+    int d;
+
+    cout << "مرحبا بك "  << endl;
+
+    cout << "الرجاء ادخال معلوماتك الشخصية" << endl;
+
+    cout << "you age :" << endl;
+
+    cin >> a ;
+
+    cout << "you first name :" << endl;
+
+    cin  >>b ;
+
+    cout << "you last name :" << endl;
+
+    cin >> c ;
+
+    cout << "your id : " << endl;
+
+      cin >> d;
+
+    person oop;
+
+    oop.setage(a);
+
+    oop.setfirstname(b);
+
+    oop.setlastname(c);
+
+    oop.setstd(d);
+
+    oop.print();
+
+}
