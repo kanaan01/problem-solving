@@ -1,0 +1,10 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+  string a;
+  getline(cin,a);
+  int x=a.find(" ");
+  int z=a.rfind(" ");
+   cout << a.substr(x+1,z-x) << endl;
+}
