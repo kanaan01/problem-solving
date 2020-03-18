@@ -1,0 +1,12 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main()
+{
+  float a,b;
+  cin >> a >> b;
+  float v=3.5*(a*a-b*b) ;
+  cout <<  setprecision(1) << fixed << "The cost of plant grass around the pool is " <<v;
+  
+  return 0;
+}
