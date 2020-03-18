@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+int main(void)
+{
+  int a,b,c;
+  cin >> a >> b >> c;
+  long z,v;
+  if(a%c==0) z=a/c;
+  if(a%c!=0) z=a/c+1;
+  if(b%c==0) v=b/c;
+  if(b%c!=0) v=b/c+1;
+  cout << z*v;
+}
