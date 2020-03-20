@@ -1,0 +1,39 @@
+#include<iostream>
+using namespace std;
+struct tim
+{
+  int sec,min,hour;
+};
+struct film
+{
+   string name;
+   int Duration;
+   tim startTime;
+};
+
+void read(film &oop)
+{
+  cin >> oop.name;
+  cin >> oop.Duration;
+  cin >> oop.startTime.sec>>oop.startTime.min>>oop.startTime.hour;
+}
+void print(film &oop)
+{
+  cout << "Film name: " << oop.name << endl;
+  cout << "Duration: " << oop.Duration <<  " seconds" << endl;
+    cout << "the Time of starting show : " << oop.startTime.sec << ":" <<oop.startTime.min << ":" << oop.startTime.hour << endl;
+}
+void WhenToEnd (film &oop)
+{
+  int z= oop.Duration%60;
+  int v=z%60;
+  int n=v%60;
+  cout << "the film will end at " << v << ":" << z << ":" << n << endl;
+}
+int main() {
+ film oop;
+  read(oop);
+  print(oop);
+  WhenToEnd(oop);
+  return 0;
+}
