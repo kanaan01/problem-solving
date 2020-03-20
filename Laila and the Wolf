@@ -1,0 +1,15 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+int main(void)
+{
+  int a,x;
+  float s;
+  cin >> a >> x >> s;
+  float y=sqrt(a*a-x*x);
+  float z=sqrt(y*y);
+ cout << setprecision(3) << fixed <<  "The total Distance = " << z+x <<  " Meters"<< endl;
+  cout << setprecision(1) << fixed << "Laila spent " << (y+x)/s << " seconds on her trip to reach her grandma house." << endl;
+  cout << setprecision(1) << fixed <<  "The " << (y+x)/s << " is equal to " <<(y+x)/(s*60) << " Minutes.";
+}
