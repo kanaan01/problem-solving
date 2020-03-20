@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+int main (void) {
+int n,m=0,g;
+cin>>n;
+string s;
+float sum=0;
+for(int i=0;i<n;i++)
+{
+cin>>s>>g;
+m+=g;
+if(s[0]=='A'){
+if(s=="A+")
+sum+=4.2*g;
+else if(s=="A")
+sum+=4*g;
+else if(s=="A-")
+sum+=3.75*g;}
+
+else if(s=="F")
+sum+=0.5*g;
+else{
+  if(s[0]=='B')
+  sum+=3.25*g;
+  if(s[0]=='C')
+  sum+=2.5*g;
+  if(s[0]=='D')
+  sum+=1.75*g;
+  if(s[1]=='+')
+  sum+=0.25*g;
+  if(s[1]=='-')
+  sum-=0.25*g;
+}
+}
+float p=sum/m; 
+cout<<p<<endl;
+if(p==4.2f)
+cout<<"A+";
+else if(p>=4)
+cout<<"A";
+else if(p>=3.75)
+cout<<"A-";
+else if(p>=3.5)
+cout<<"B+";
+else if(p>=3.25)
+cout<<"B";
+else if(p>=3)
+cout<<"B-";
+else if(p>=2.75)
+cout<<"C+";
+else if(p>=2.5)
+cout<<"C";
+else if(p>=2.25)
+cout<<"C-";
+else if(p>=2)
+cout<<"D+";
+else if(p>=1.75)
+cout<<"D";
+else if(p>=1.5)
+cout<<"D-";
+else cout<<"F";
+    return 0;
+}
