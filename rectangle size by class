@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+class rectangle
+{
+  private:
+  float length;
+  float width;
+  public:
+  void setlength(float a)
+  {
+    length=a;
+  }
+  void setwidth(float b)
+  {
+    width=b;
+  }
+  float getlength()
+  {
+    return  length;
+  }
+  float getwidth()
+  {
+    return width;
+  }
+  float  area();
+};
+float rectangle:: area()
+{
+  return length*width;
+}
+int main()
+{
+  float a,b;
+  cout << "Enter two  numbers : " << endl;
+  cin >> a >> b;
+  rectangle oop;a
+  oop.setlength(a);
+  oop.setwidth(b);
+  cout << "length = " << oop.getlength() << endl;
+  cout << "width = " << oop.getwidth() << endl;
+ cout << "the area is = " << oop.area();
+}
+
