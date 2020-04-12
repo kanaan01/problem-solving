@@ -1,0 +1,188 @@
+code2p logo
+
+Home
+
+Join test
+
+Replies
+
+My test
+
+Compiler
+
+Tutorial
+
+المستوى
+19:56:59
+LAB 6 - Classes III Questions
+Classes III
+Problem Submissions Teacher solutions
+ Challenge task
+Write the definition of a struct MealNode with 2 member variables (Name and price) and the definition and implementation of the class Restaurant that has two member variables (an array of type MealNode and a length variable) as shown in the following UML diagrams.
+
+Restaurant
+
+ - meal[5]: MealNode
+
+ - length: int
+
+ + Restaurant()
+
+ + insert(string, double): void
+
+ + PrintAllMeals(): void
+
+ + CountAllLessThan(double): int
+
+ + riseOfprices(double): void
+
+ +~Restaurant()
+
+ 
+
+MealNode
+
++ Name: string
+
++ price: double
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+The constructor: will initialize the length to no meal in the list.
+ 
+insert(string, double): will take the meal name and its price then added to the end of the list if the list is full " the list is full " will be printed.
+ 
+printAllMeals(): print all the meals and the prices if the list is not empty else print "the list is empty".
+CountAllLessThan(double): will take a price then counts and returns the number of meals which prices are less than the given parameter.
+ 
+riseOfPrices(double): will take a parameter and increase all the meals by this number. If burger’ price is 3.5   and the parameter is (1.2) then the burger price will be 4.7.
+ 
+The destructor: to print "end of class restaurant" statement.
+Cheaper (Restaurant &r1, Restaurant  &r2, double price): a non-member function that return the restaurant with more number of cheap meals based on the given price.
+ 
+
+In the main:
+
+Declare array of objects of type Restaurant rest with size 2.
+Prompt the user to enter 4 meals to the rest[0] object and rest[1] using loop structure and cin statement (remember that, each meal has a name and a price).
+Print all the meals in the rest[0] object.
+Prompt the user to enter a price then prints the number of all meals that have price less than the entered price at rest[0].
+Prompt the user to enter a number then increase all meals price at rest[0] by this number. Then print the restaurant object after this action.
+Call a cheaper function to know which restaurant is cheaper if the discriminator(المميز) price is 1 JD, Then print the cheaper restaurant object.
+ 
+
+ Constraints
+none
+
+ Input Format
+you must enter four meals for each restaurant (i.e. eight string variable and eight double values)
+
+followed by two double values.
+
+ Output Format
+see the sample run which is best to explain how the output will be.
+
+ Sample #1
+Input
+burger 1.25
+falafel .75
+shawrma 2.20
+mojanat 0.25
+pizza .75
+burger .75
+shawrma 2.6
+managesh .25
+1.5 0.5
+Output
+meals at the first restaurant:
+burger 1.25
+falafel 0.75
+shawrma 2.2
+mojanat 0.25
+number of meals less than 1.5 is 3
+meals at the first restaurant after raise the price by 0.5:
+burger 1.75
+falafel 1.25
+shawrma 2.7
+mojanat 0.75
+the cheaper restaurant is
+pizza 0.75
+burger 0.75
+shawrma 2.6
+managesh 0.25
+end of class restaurant
+end of class restaurant
+end of class restaurant
+ Code  Path2Code
+ 
+1
+#include <iostream>
+2
+using namespace std;
+3
+struct MealNode
+4
+{
+5
+  string name;
+6
+  double price;
+7
+};
+8
+class Restaurant
+9
+{
+10
+  MealNode meal[5];
+11
+  int length ;
+12
+  public:
+13
+  Restaurant();
+14
+  void insert(string , double );
+15
+  void PrintAllMeals();
+16
+  int CountAllLessThan(double);
+17
+  void riseOfprices(double);
+18
+  ~Restaurant();
+19
+};
+20
+Restaurant::Restaurant()
+21
+{
+22
+  length = 0; 
+23
+}
+24
+void Restaurant::insert(string a , double b)
+25
+{
+  Custom input?  
+Path2Code.com © 2020 All rights reserved.
