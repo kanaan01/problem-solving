@@ -1,0 +1,75 @@
+#include<iostream>
+using namespace std;
+struct Country{
+  string name;
+  double area;
+};
+class Continent{
+  Country list[5];
+  int length;
+  public:
+   Continent (){
+     length=0;
+   }
+  void NewContry(string a, double s){
+    list[length].name=a;
+    list[length].area=s;
+    length++;
+  }
+  void print(){
+    if(length==0)
+      cout<<"the list is empty"<<endl;
+    else {
+      for(int w=0;w<length;w++){
+        cout<<list[w].name<<" "<<list[w].area<<endl;
+    }  } 
+  }
+  void  getCountryInfo(int i, string &o, double&p){
+    o=list[i].name;
+    p=list[i].area;
+  }
+  int numOfCountries(){
+   return length;
+  }
+  ~ Continent (){
+    cout<<"end of class Continent"<<endl;
+  }
+  
+};
+Continent SmallestContinent(Continent & p1, Continent & p2){
+    double sum1=0,sum2=0,a;
+    string s;
+  for(int y=0;y<p1.numOfCountries();y++){
+  p1.getCountryInfo(y,s,a);
+    sum1+=a;
+  }
+for(int y=0;y<p2.numOfCountries();y++){
+  p2.getCountryInfo(y,s,a);
+      sum2+=a;
+}
+  if(sum1<sum2)
+    return p1;
+  else 
+    return p2;
+}
+int main() {
+Continent arr[2];
+  string n;
+  double a;
+  for(int i=0;i<4;i++){
+    cin>>n>>a;
+    arr[0].NewContry(n,a);
+  }
+  for(int i=0;i<4;i++){
+    cin>>n>>a;
+    arr[1].NewContry(n,a);
+  }
+  cout<<"The countries information in the first continent is:"<<endl;
+  arr[0].print();
+  cout<<"The countries information in the second continent is:"<<endl;
+  arr[1].print();
+  cout<<"The continent with the smallest area has the following countries:"<<endl;
+  Continent g1=SmallestContinent(arr[0] , arr[1]);
+  g1.print();
+  return 0;
+}
