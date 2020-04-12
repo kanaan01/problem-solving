@@ -1,0 +1,181 @@
+#include<iostream>
+#include<string>
+using namespace std;
+struct Book
+{
+string title;
+double price;
+};
+class Library
+{
+int numOfBooks;
+int maxNumOfBooks;
+Book * list;
+public:
+Library(int maxNumOfBooks = 100)
+{
+if(maxNumOfBooks <= 0 )
+this->maxNumOfBooks = 100;
+else
+this->maxNumOfBooks = maxNumOfBooks;
+list = new Book[this->maxNumOfBooks];
+numOfBooks =0;
+}
+Library(const Library & o)
+{
+maxNumOfBooks = o.maxNumOfBooks;
+numOfBooks = o.numOfBooks;
+list = new Book[maxNumOfBooks];
+for (int i =0; i<o.numOfBooks; i++)
+list[i] = o.list[i];
+}
+~Library()
+{
+delete [] list;
+// any thing build dynamicly must be deleted in the destructor.
+}
+bool isEmpty()
+{
+return numOfBooks == 0;
+}
+bool isFull()
+{
+return numOfBooks == maxNumOfBooks;
+}
+int getnumOfBooks()
+{
+return numOfBooks;
+}
+int getmaxNumOfBooks()
+{
+return maxNumOfBooks;
+}
+void insertEnd(Book g)
+{
+if(!isFull())
+{
+list[numOfBooks] = g;
+numOfBooks++;
+}
+else
+cout<<"sorry you reach the max capacity."<<endl;
+}
+void printAllBooks()
+{
+if(!isEmpty())
+for (int i =0; i<numOfBooks; i++)
+cout<<list[i].title <<" "<<list[i].price<<endl;
+cout<<endl;
+}
+void riseOfPrices(double t)
+{
+if(!isEmpty())
+for (int i =0; i<numOfBooks; i++)
+list[i].price += t;
+}
+void printAllLessThan(double t)
+{
+if(!isEmpty())
+for (int i =0; i<numOfBooks; i++)
+if(list[i].price < t)
+cout<<list[i].title <<" "<<list[i].price<<endl;
+cout<<endl;
+}
+double searchBook(string t)
+{
+if(isEmpty())
+return -1;
+else
+{
+for(int i =0; i<numOfBooks; i++)
+{
+if(list[i].title == t)
+return list[i].price;
+}
+return -1;
+}
+}
+bool compare(Library & obj)
+{
+double sum1 = 0, sum2 = 0;
+for(int i = 0; i<numOfBooks; i++)
+sum1 += list[i].price;
+for(int i = 0; i<obj.numOfBooks; i++)
+sum2 += obj.list[i].price;
+if(sum1 <= sum2)
+return true;
+else
+return false;
+}
+Book retriveBook(int index)
+{
+Book b1;
+b1.price = 0;
+b1.title = "";
+if(isEmpty ())
+return b1;
+else
+{
+if(index <0 || index > maxNumOfBooks)
+return b1;
+else
+{
+return list[index];
+}
+}
+}
+};
+Library BookTitlesAToD(Library & r1, Library & r2)
+{
+Library t;
+for(int i =0; i<r1.getnumOfBooks(); i++)
+{
+Book b = r1.retriveBook(i);
+if(b.title [0] >= 'A' && b.title [0] <= 'D')
+t.insertEnd(b);
+}
+for(int i =0; i<r2.getnumOfBooks(); i++)
+{
+Book b = r2.retriveBook(i);
+if(b.title [0] >= 'A' && b.title [0] <= 'D')
+t.insertEnd(b);
+}
+return t;
+}
+int main()
+{
+Library a1, a2;
+Book b;
+for (int i =0; i<4; i++)
+{
+cin>>b.title>>b.price;
+a1.insertEnd(b);
+}
+for (int i =0; i<4; i++)
+{
+cin>>b.title>>b.price;
+a2.insertEnd(b);
+}
+double p1, p2;
+cin>>p1;
+cin>>p2;
+cout<<"the books of first Library are :"<<endl;
+a1.printAllBooks();
+cout<<"the books of second Library are :"<<endl;
+a2.printAllBooks();
+cout<<"all books less than " <<p1<<" in the first library:"<<endl;
+a1.printAllLessThan(p1);
+cout<<"the list of second library after increasing their values by"<<p2<<":"<<endl;
+a2.riseOfPrices(p2);
+//cout<<"the list of second library after increasing their values:"<<endl;
+a2.printAllBooks();
+bool a = a1.compare (a2);
+if(a)
+cout<<"the first library is cheaper than the second library"<<endl;
+else
+cout<<"the second library is cheaper than the first library"<<endl;
+Library a3 = BookTitlesAToD(a1, a2);
+cout<<"the books that started with A, B, C or D:"<<endl;
+a3.printAllBooks();
+ return 0;
+}
