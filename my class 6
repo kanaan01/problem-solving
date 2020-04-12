@@ -1,0 +1,158 @@
+#include <iostream>
+using namespace std;
+class Student
+{
+  int length;
+  int maxNumOfGrades; 
+  int *list;
+  public:
+  Student(int maxNumOfGrades=100)
+  {
+    length =0;
+    list=new int[this->maxNumOfGrades];
+    if(maxNumOfGrades<0)
+      this->maxNumOfGrades=100;
+    else 
+      this->maxNumOfGrades=maxNumOfGrades;
+  }
+  Student(const Student&o)
+  {
+    length =o.length;
+    maxNumOfGrades=o.maxNumOfGrades;
+    list =new int[maxNumOfGrades];
+    for(int i=0;i<length;i++)
+    {
+      list[i]=o.list[i];
+    }
+  }
+  ~Student()
+  {
+    delete [] list;
+  }
+  bool isEmpty()
+  {
+    if(length==0)
+      return true;
+      else 
+      return false;
+  }
+  bool isFull()
+  {
+    if(length==maxNumOfGrades)
+      return true;
+    else 
+      return false;
+  }
+  int getLength()
+  {
+    return length;
+  }
+  int getMaxNoOfgrades()
+  {
+    return maxNumOfGrades;
+  }
+  void insert(int g)
+  {
+    if(!isFull())
+    {
+      list[length]=g;
+      length++;
+      
+    }
+    else 
+      cout << "max is here " << endl;
+  }
+  void printall()
+  {
+    if(!isEmpty())
+      for(int i=0;i<length;i++)
+        cout << list[i] << " ";
+    cout << endl;
+  }
+  int retrieveGrade(int index)
+  {
+    if(list==0)
+      return -1;
+   else if(index<0||index>maxNumOfGrades)
+      return -1;
+    else 
+    return list[index];
+  }
+  int maxGrade()
+  {
+    int max=list[0];
+    if(length==0)
+      return -1;
+    else
+      for(int i=1;i<length;i++)
+      {
+        if(list[i]>max)
+          max=list[i];
+      }
+    return max;
+    
+  }
+  double AVG()
+  {
+    if(isEmpty())
+      return -1;
+  else
+  {
+    double x;
+    for(int i=0;i<length;i++)
+    {
+      x=x+list[i];
+      
+    }
+    return x/length;
+   
+ }
+  }
+Student HighestAVG(Student& s)
+{
+ if(AVG() >s.AVG())
+   return *this;
+  else
+    return s;
+}
+};
+ Student HasMorePass(Student & s1, Student & s2)
+    {
+      int c1=0 , c2=0;
+     for(int i=0;i<s1.getLength();i++)
+     {
+       if(s1.retrieveGrade(i)>=50)
+       c1++;
+     }
+      for(int i=0;i<s2.getLength();i++)
+     {
+       if(s2.retrieveGrade(i)>=50)
+       c2++;
+     }
+      if(c1>c2)
+        return s1;
+      else 
+        return s2;
+    }
+int main()
+{
+  Student oop,oop1;
+   int a[10];
+   for(int i=0;i<10;i++) cin >> a[i];
+  for(int i=0;i<5;i++)
+  {
+    oop.insert(a[i]);
+    oop1.insert(a[i+5]);
+  }
+  cout << "the grades of first student are :" << endl;
+  oop.printall();
+  cout << "the grades of second student are :" << endl;
+  oop1.printall();
+  Student s3=oop.HighestAVG(oop);
+ cout << "the grades of student with higher AVG are:"<<endl;
+  s3.printall();
+  Student s4=HasMorePass(oop,oop1);
+ cout << "the grades of student with more pass are:"<<endl;
+  s4.printall();
+
+}
