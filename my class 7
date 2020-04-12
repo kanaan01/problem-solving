@@ -1,0 +1,147 @@
+#include<iostream>
+using namespace std;
+class Market {
+  int l;
+  int mnot;
+  double *toys;
+  public :
+  Market(int a = 100) {
+    l=0;
+    if (a>0)
+      mnot = a;
+    else 
+      mnot = 100;
+    toys = new double [mnot];
+  }
+  Market(const Market & b) {
+    l = b.l;
+    mnot = b.mnot;
+    toys = new double [mnot];
+    for (int y=0; y<l; y++)
+      toys[y]=b.toys[y];
+  }
+  ~Market() { delete [] toys; }
+  bool isEmpty() {
+    if(l==0)
+      return true;
+    else return false;
+  }
+  bool isFull() {
+    if(l==mnot) 
+      return true;
+    else return false;
+  }
+  int getLength() { return l; }
+  int getMaxNoOfToys() { return mnot; }
+  void insert(double c) {
+    if (l==mnot)
+      cout << "sorry you reach the max capacity." << endl;
+    else {
+      toys[l]=c;
+      l++;
+    }
+  }
+  void printAll() {
+    if(!isEmpty())
+      for (int g=0; g<l; g++)
+        cout << toys[g] << " ";
+    cout << endl;   
+  }
+ double retrieveToy(int i) {
+   if(!isEmpty())
+     return toys[i];
+   else return -1;
+ }
+  int expensiveToy() {
+    if(isEmpty())
+      return -1;
+    else {
+      double max;
+      max=toys[0];
+      for (int f=0; f<l; f++)
+        if(toys[f]>max)
+          max=toys[f];
+      return max;
+    }
+  }
+  double computeBill() {
+    if(isEmpty())
+      return -1;
+    else {
+      double sum=0;
+      for (int h=0; h<l; h++)
+        sum+=toys[h];
+      return sum;
+    }
+  }
+  Market cheap(Market & w) {
+    if(computeBill()>w.computeBill())
+      return w;
+    else 
+      return *this;
+  }
+  void splitMarket(Market &r1, Market &r2) {
+    int j=0,k=0;
+  for (int y=0; y<l; y++) {
+    if(toys[y]<2) {    
+      r1.toys[j]=toys[y];
+      j++; }
+    else {
+      r2.toys[k]=toys[y];
+      k++;
+    }
+    
+  }
+    for (int p=0; p<j; p++)
+      cout << r1.toys[p] << " ";
+    cout << endl;
+    for (int f=0; f<k; f++)
+      cout << r2.toys[f] << " ";
+    cout << endl;
+  }
+};
+Market cheapestMarket(Market &m1, Market &m2) {
+  int c1=0,c2=0;
+  double a1=0,a2=0;
+  for (int e=0; e<m1.getLength(); e++) {
+   a1 = m1.retrieveToy(e);
+    if(a1<1.5)
+      c1++;
+  }
+   for (int w=0; w<m2.getLength(); w++) {
+   a2 = m2.retrieveToy(w);
+    if(a2<1.5)
+      c2++;
+  }
+  if(c1>c2)
+    return m1;
+  else return m2;
+}
+int main() {
+double a[12];
+  Market obj1,obj2;
+  for(int d=0; d<12; d++) {
+    cin >> a[d];
+  }
+    for(int s=0; s<6; s++) {
+    obj1.insert(a[s]);
+    obj2.insert(a[s+6]);  
+  }
+  cout << "the toys of first market are :" <<endl;
+  obj1.printAll();
+  cout << "the toys of second market are :" << endl;
+  obj2.printAll();
+  cout << "the toys of the lowest bill market:" << endl;
+  Market obj3 = obj1.cheap(obj2);
+  obj3.printAll();
+  cout << "the toys in the market with more prices less than $1.5:" << endl;
+  Market obj4 = cheapestMarket(obj1,obj2);
+  obj4.printAll();
+  cout << "the toys after splitting the first market:" << endl;
+  Market obj5,obj6;
+  obj1.splitMarket(obj5,obj6);
+ 
+
+
+  return 0;
+}
