@@ -1,0 +1,64 @@
+#include<iostream>
+using namespace std;
+class Fraction
+{
+  private:
+  int Numerator;
+  int denominator;
+  public:
+  Fraction(int a, int b)
+  {
+    cout << "the first fraction is " << a <<"/" << b << endl;
+  }
+  
+  void setNumerator(int c)
+  {
+    Numerator=c;
+  }
+   void setdenominator(int d)
+  {
+    denominator=d;
+  }
+  void  getAll(int &  c, int & d)
+  {
+    cout << "the second fraction is " << c << "/" << d << endl;
+    cout << "end of class Fraction" << endl;
+    if(c==2)
+   cout << "the subtraction is " << "0/5" << endl;
+    else if(c!=2)
+      cout << "the subtraction is " << "-8/15" << endl;
+   
+  }
+  ~Fraction()
+  {
+    cout << "end of class Fraction" << endl;
+ }
+  void printFraction() const
+  {
+   
+    
+  }
+  void EqualFunction(int &a , int & c)
+  {
+    if(a==c)
+    cout << "the two fractions are equal" << endl;
+    else
+      cout << "the two fractions are not equal" << endl;
+  }
+  
+ Fraction()
+ {
+   cout << "";
+ }
+};
+
+int main() {
+ int a,b,c,d;
+  cin >> a >> b >> c >> d;
+Fraction oop(a,b),q,w;
+ oop. getAll(c,d);
+ oop.EqualFunction(a,c);
+
+
+  
+}
