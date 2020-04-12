@@ -1,0 +1,91 @@
+#include<iostream>
+using namespace std;
+struct Employee
+{
+  string name;
+  int YearOfstartOfwork;
+  double salary;
+};
+class Corporation
+{
+  Employee list[5];
+  int length;
+  public:
+  Corporation()
+  {
+    length =0;
+  }
+  void insert(string a , int b , double c)
+  {
+    if(length==5) cout << "The list is full, can't insert more employees!!" << endl;
+    else 
+    {
+      list[length].name= a;
+      list[length].YearOfstartOfwork =b;
+      list[length].salary =c;
+      length++;
+    }
+  }
+  void PrintAllEmployee()
+  {
+    if(length!=0)
+      for(int i=0;i<length;i++)
+      cout << list[i].name << " " << list[i].YearOfstartOfwork << " " << list[i].salary << endl;
+    else
+      cout << "The list is empty, nothing to print!!" << endl;
+  }
+  int NumOfEmployees()
+  {
+    return length;
+  }
+  void get(int i, string &o , int &p, double &l)
+  {
+    o=list[i].name;
+    p=list[i].YearOfstartOfwork;
+    l=list[i].salary;
+  }
+  ~Corporation()
+  {
+    cout << "end of class corporation" << endl;
+  }
+};
+string longestPeriod(Corporation & oop)
+{
+ string o,n;
+  int p;
+  double l;
+  int k;
+  int min=0;
+  for(int i=0;i<4;i++)
+  {
+    oop.get(i,o,p,l);
+     k=2020-p;
+    if(k>min)
+    {
+      min=k;
+      n=o;
+    }
+  }
+    return n;
+}
+  
+  
+
+
+int main() {
+
+Corporation oop;
+  string a;
+  int b;
+  double c;
+for(int i=0;i<4;i++)
+{
+  cin >> a >> b >> c;
+  oop.insert(a,b,c);
+}
+   cout << "the employees information are:"<< endl;
+  oop.PrintAllEmployee();
+ cout << "the employee with longest work period is " << longestPeriod(oop) << endl;
+
+  return 0;
+}
