@@ -1,0 +1,73 @@
+#include<iostream>
+using namespace std;
+struct Room{
+  string RoomID;
+  int Reservation_duration;
+  double priceperday;
+};
+class Hotel{
+  Room rooms[5];
+  int Length;
+  public :
+  Hotel(){
+   Length=0;
+ }
+  void  New_reservation(string , int , double );
+  void Print (){
+    if(Length!=0){
+      for(int n=0;n<Length;n++){
+      cout<<"RoomID:"<<rooms[n]. RoomID<<"  reservation_duration:" ;       
+      cout<< rooms[n].Reservation_duration<<"  Price Per Day:"<<rooms[n].priceperday<<endl;    }
+  }}
+  double income (){
+    int count=0;
+  for(int y=0;y<Length;y++)
+  {
+   count+=rooms[y].Reservation_duration*rooms[y].priceperday;
+      
+  }
+   return count;
+}
+  ~ Hotel (){
+  cout<<"End of Hotel reservation object"<<endl;
+}
+};
+void Hotel::New_reservation(string a, int s, double d){
+  if (Length==5)
+    cout<<"sorry the list is full"<<endl;
+  else 
+  {
+    rooms[Length].RoomID=a;
+    rooms[Length].Reservation_duration=s;
+    rooms[Length].priceperday=d;
+    Length++;
+  }
+  }
+
+Hotel Largest_income (Hotel & h1, Hotel & h2){
+  if(h1.income ()>h2.income ())
+    return h1;
+  else return h2;
+}
+  int main() {
+    Hotel arr[2];
+    string z;
+    int x;
+    double c;
+    for(int i=0;i<2;i++){
+      cin>>z>>x>>c;
+      arr[0].New_reservation(z,x,c);
+    }
+    for(int i=0;i<2;i++){
+      cin>>z>>x>>c;
+      arr[1].New_reservation(z,x,c);
+    }
+    cout<<"reservations at the first hotel :"<<endl;
+    arr[0].Print ();
+    cout<<"reservations at the second hotel :"<<endl;
+     arr[1].Print ();
+    cout<<"the hotel with the largest_income is :"<<endl;
+    Hotel h3=Largest_income(arr[0],arr[1]);
+    h3.Print();
+  return 0;
+}
