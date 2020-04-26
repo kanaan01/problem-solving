@@ -1,0 +1,85 @@
+#include <iostream>
+using namespace std;
+class Driver {
+  
+      int age;
+      double salary;
+      string name;
+
+public:
+      Driver (int a, double b, string c)
+      {
+        if(a<20)
+        this-> age=20;
+        else 
+          this->age=a;
+       if(b<100)
+         salary=100;
+        else 
+          this->salary=b;
+        name = c;
+      }
+      void getAll(int  &a , double & b , string &c)
+  {
+        c=name;
+        b=salary;
+        a=age;
+        
+  }
+      ~Driver()
+      {
+        cout << "Driver destructor" << endl;
+      }
+};
+class Car {
+
+    double price;
+    string color;
+    Driver m1;
+    public:
+    Car(double x1, string x2 , int a , double b , string c):m1(a,b,c)
+    {
+      if(x1<1000)
+        this->price=1000;
+      else
+        this->price=x1;
+      color=x2;
+    }
+    void printInfo()
+    {
+      int age;
+      double salary;
+      string name;
+      cin >> age >> salary >> name;
+      m1.getAll(age , salary , name);
+       cout << "Driver information:" << endl;
+        cout << "Driver name: " << name << endl;
+        cout << "Driver age: " << age << endl;
+        cout << "Driver salary : " << salary << endl; 
+      cout << "Car information:" << endl;
+      cout << "Car price: " << price << endl;
+      cout << "Car color: " << color << endl;
+      
+      
+    }
+    ~Car()
+    {
+      cout << "Car destructor" << endl;
+    }
+
+  };
+int main(void)
+{
+  double price;
+    string color;
+   int age;
+      double salary;
+      string name;
+  cin >> price>>color>>age>>salary>>name;
+ 
+  Car oop(price,color,age,salary,name);
+ 
+
+  oop.printInfo();
+  
+}
