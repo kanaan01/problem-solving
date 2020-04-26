@@ -1,0 +1,87 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class person
+{
+string SSN;
+string name;
+public:
+person(string s,string f)
+{
+SSN=s;
+name=f;
+}
+~person()
+{
+cout<<"end of class person\n";
+}
+void GetAll(string &s,string &f)
+{
+s=SSN;
+f=name;
+}
+};
+class car
+{
+string CID;
+int ym;
+double price;
+public:
+car (string c,int y,double p )
+{
+CID=c;
+ym=y;
+price=p;
+}
+~car()
+{
+cout<<"end of class Car\n";
+}
+void getAll (string &d, int &f, double &k)
+{
+d=CID;
+f=ym;
+k=price;
+}
+};
+class Employee : public person
+{
+double salary;
+car c1;
+public:
+Employee(string a, string b, string c, int d, double e, double f):person(a,b), c1(c,d,e)
+{
+salary=f;
+}
+~Employee()
+{
+cout<<"end of class Employee\n";
+}
+double Getsalary ()
+{
+return salary;
+}
+void printInfo()
+{
+string a,d;
+person::GetAll(a,d);
+cout<<"SSN : "<<a<<endl;
+cout<<"name : "<<d<<endl;
+cout<<"Salary = "<<salary<<endl;
+string g;
+int f;
+double k;
+c1.getAll(g,f,k);
+cout<<d<<" has car its number is "<<g<<" Year of manufacture is "<<f<<" and its price is "<<k<<endl;
+}
+};
+int main()
+{
+string a,b,c;
+int r;
+double d,g;
+cin>>a>>b>>c>>r>>d>>g;
+Employee v(a,b,c,r,d,g);
+v.printInfo();
+return 0;
+}
