@@ -1,0 +1,115 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class FarmAnimal
+{
+public:
+FarmAnimal( int age, double water_consumption)
+{
+cout<<"FarmAnimal constructor"<<endl;
+this->water_consumption = water_consumption;
+this->age = age;
+}
+~FarmAnimal( )
+{
+cout<<"FarmAnimal destructor"<<endl;
+}
+double getWaterConsumption()
+{
+return water_consumption;
+}
+void setWaterConsumption( double t)
+{
+water_consumption=t;
+}
+int getAge()
+{
+return age;
+}
+void setAge( double t)
+{
+age=t;
+}
+void printInfo()
+{
+cout<<"Water Consumption = "<<water_consumption<<endl;
+cout<<"Age = "<<age<<endl;
+}
+private:
+double water_consumption;
+int age;
+};
+class Cow : public FarmAnimal
+{
+public:
+Cow(double w, int a, double k) : FarmAnimal(a,k)
+{
+cout<<"Cow constructor"<<endl;
+weight = w;
+milkProduction = calculateMilk();
+}
+~Cow()
+{
+cout<<"Cow destructor"<<endl;
+}
+void setWeight (double k)
+{
+weight = k;
+}
+double calculateMilk()
+{
+return (getWaterConsumption() * 0.01 * weight)/getAge();
+}
+void printInfo()
+{
+FarmAnimal::printInfo();
+cout<<"Cow Weight = "<<weight<<endl;
+cout<<"Total cow milk production = "<<milkProduction<<endl;
+}
+private:
+double weight;
+double milkProduction;
+};
+class Sheep : public FarmAnimal
+{
+public:
+Sheep(double w, int a, double k) : FarmAnimal(a,k)
+{
+cout<<"Sheep constructor"<<endl;
+weight = w;
+milkProduction = calculateMilk();
+}
+~Sheep()
+{
+cout<<"Sheep destructor"<<endl;
+}
+void setWeight (double k)
+{
+weight = k;
+}
+double calculateMilk()
+{
+return (getWaterConsumption() * 0.005 * weight)/getAge();
+}
+void printInfo()
+{
+FarmAnimal::printInfo();
+cout<<"Sheep Weight = "<<weight<<endl;
+cout<<"Total sheep milk production = "<<milkProduction<<endl;
+}
+private:
+double weight;
+double milkProduction;
+};
+int main()
+{
+double w, water;
+int ag;
+cin>>w>>ag>>water;
+Cow c1(w,ag,water);
+c1.printInfo();
+cin>>w>>ag>>water;
+Sheep s1(w,ag,water);
+s1.printInfo();
+return 0;
+}
