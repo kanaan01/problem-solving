@@ -1,0 +1,74 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+class shape 
+{
+  private:
+  double length;
+  double width;
+  public:
+  shape(double length , double width)
+  {
+    this->length=length;
+    this->width=width;
+  }
+  double area()
+  {
+    return length*width;
+  }
+  double getlength()
+  {
+    return length;
+  }
+  double getwidth()
+  {
+    return width;
+  }
+  ~shape()
+  {
+    cout << "end of class shape" << endl;
+  }
+  void print()
+  {
+    cout << "the length is " << length << endl;
+    cout << "the width is " << width <<  endl;
+  }
+};
+class rectangle :public shape
+{
+  public:
+  rectangle(double length , double width):shape(length , width){}
+  ~rectangle(){ cout << "end of class rectangle" << endl;}
+  double prm(){return 2*(getlength() +getwidth()); }
+  void print()
+  {
+  shape::print();
+  cout << "area is " << area() << endl;
+  cout << "the perimeter is " << prm() << endl;
+  }
+};
+class circle : private shape
+{
+  public:
+  circle(double c) : shape(c,0) {}
+  ~circle(){ cout << "end of class circle" << endl;}
+  double area(){return 3.14*(getlength()*getlength());}
+  void print()
+  {
+   cout << "the radius is: " << getlength() << endl;
+   cout << "the area of circle is " << area() << endl;
+  }
+};
+int main(void)
+{
+  double length , width , c;
+  cin >> length >> width >> c;
+  //  shape oop2(length , width);
+
+  rectangle oop(length , width);
+  circle oop1(c );
+ // oop2.print();
+  oop.print();
+  oop1.print();
+  
+}
