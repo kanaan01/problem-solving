@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+class Movie
+{
+ string name, author; 
+  public:
+  Movie(string a , string b)
+  {
+    name=a;
+    author=b;
+  }
+  ~Movie()
+  {
+    cout << "end of class movie" << endl;
+  }
+  void printinfo()
+  {
+    cout << "movie name is " << name << endl;
+    cout << "movie author is " << author << endl;
+  }
+};
+class Cinema
+{
+  string location;
+  int NoOfLevels;
+  double area;
+  int capacity;
+  Movie m1;
+  public:
+  Cinema(string x1,int x2 , double x3 , int x4, string a , string b):m1(a,b)
+  {
+    location = x1;
+    NoOfLevels = x2;
+    area = x3;
+    capacity = x4;
+  }
+  ~Cinema()
+  {
+    cout << "end of class cinema" << endl;
+  }
+  int getCapacity()
+  {
+    return capacity;
+  }
+  void printinfo()
+  {
+    cout << "the location of building is "<<location<<endl;
+    cout << "number of level is " <<NoOfLevels<<endl;
+    cout << "area is "<<area << endl;
+    cout << "capacity is " << capacity << endl;
+    m1.printinfo();
+  }
+};
+int main(void)
+{
+   string location;
+     int NoOfLevels;
+     double area;
+     int capacity;
+       string name, author;
+
+cin>>location>>NoOfLevels>>area>>capacity>>name>>author;
+  Cinema oop(location,NoOfLevels,area,capacity,name,author);
+  oop.printinfo();
+  
+}
