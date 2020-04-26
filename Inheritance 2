@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+class Game
+{
+private:
+string name;
+int NumOfPlayer;
+public:
+Game (string a, int b )
+{
+  name =a;
+  NumOfPlayer=b;
+}
+~Game()
+{
+  cout << "end of class Game" << endl;
+}
+void getAll( string &a, int &b)
+{
+  a=name;
+  b=NumOfPlayer;
+}
+};
+//
+class ComputerGame: public Game 
+{
+private:
+double size;
+public:
+ComputerGame (string a , int b , double c):Game(a,b)
+{
+  size=c;
+}
+~ComputerGame ()
+{
+  cout << "end of class Computer game" << endl;
+}
+void printInfo()
+{
+string a;
+int b;
+Game::getAll(a,b);
+  cout << "Computer game name is: " << a  << endl;
+  cout << "Computer game number of players is: " << b << endl;
+  cout << "size is: " << size << endl;
+}
+};
+int main()
+{
+  string a;
+  int b;
+  double c;
+  cin >> a >>b >> c;
+  ComputerGame oop(a,b,c);
+  oop.printInfo();
+}
