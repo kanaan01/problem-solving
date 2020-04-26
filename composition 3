@@ -1,0 +1,88 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class Doctor
+{
+double salary;
+string name;
+public:
+Doctor (string n, double s)
+{
+cout<<"Doctor constructor"<<endl;
+setDr(n, s);
+}
+~ Doctor ()
+{
+cout<<"Doctor destructor"<<endl;
+}
+void setDr(string na, double s)
+{
+name = na;
+salary = s;
+if(salary < 300)
+{
+cout<<"the salary must be >= 300"<<endl;
+salary = 300;
+}
+}
+string getName()
+{
+return name;
+}
+double getSalary()
+{
+return salary;
+}
+};
+class Hospital
+{
+ string name;
+ string address;
+Doctor drObj;
+ public:
+ Hospital(string nh, string ad, string nd, double s):drObj (nd, s)
+{
+cout<<"Hospital constructor"<<endl;
+setHospital (nh, ad, nd, s);
+}
+~Hospital()
+{
+cout<<"Hospital destructor"<<endl;
+}
+ void setHospital(string nh, string ad, string nd, double s)
+{
+drObj.setDr(nd, s);
+name = nh;
+address = ad;
+}
+void print()
+{
+cout<<"Hospital name: "<<name<<endl;
+cout<<"Hospital address: "<<address<<endl;
+cout<<"Doctor name: "<<drObj.getName()<<endl;
+cout<<"Doctor salary: "<<drObj.getSalary ()<<endl;
+}
+ Doctor getDoctor()
+{
+return drObj ;
+}
+
+ };
+void ComputeAnnualSalary(Hospital & h)
+{
+Doctor d1 = h.getDoctor();
+double total = d1.getSalary () * 12;
+cout<<"Doctor annual salary: "<<total<<endl;
+}
+int main()
+{
+string a, b, c;
+double d;
+cin>>a>>b>>c>>d;
+Hospital H1(a,b,c,d);
+cout<<endl;
+cout<<"Hospital information:"<<endl;
+H1.print();
+ComputeAnnualSalary(H1);
+cout<<endl;
+ return 0;}
