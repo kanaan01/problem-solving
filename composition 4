@@ -1,0 +1,117 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class Card
+{
+string companyName;
+int number;
+public:
+Card(string a, int b)
+{
+cout<<"Card constructor"<<endl;
+setAll(a, b);
+}
+~Card()
+{
+cout<<"Card destructor"<<endl;
+}
+void setAll(string n, int a)
+{
+companyName = n;
+number = a;
+}
+string getCompanyName()
+{
+return companyName;
+}
+int getNumber()
+{
+return number;
+}
+};
+class Phone
+{
+int memory;
+string type;
+Card cardObj;
+public:
+Phone(string a, int b, string c, int d): cardObj(c, d)
+{
+cout<<"Phone constructor"<<endl;
+type = a;
+memory = b;
+}
+~Phone()
+{
+cout<<"Phone destructor"<<endl;
+}
+int getMemory()
+{
+return memory;
+}
+string getType()
+{
+return type;
+}
+void setMemory(int a)
+{
+memory = a;
+}
+void setType(string a)
+{
+type = a;
+}
+void print()
+{
+cout<<"Phone Type: "<<type<<endl;
+cout<<"Phone memory: "<<memory<<endl;
+cout<<"Card company name: "<<cardObj.getCompanyName()<<endl;
+cout<<"Card number: "<<cardObj.getNumber()<<endl;
+}
+bool hasMoreMemory(Phone & p1)
+{
+if(memory > p1.memory)
+return true;
+else
+return false;
+}
+Card retrieveCard()
+{
+return cardObj;
+}
+};
+int SumOfDigits(Phone & p1)
+{
+int sum = 0;
+Card c1 = p1.retrieveCard();
+int num = c1.getNumber();
+while (num != 0)
+{
+sum += num %10;
+num /= 10;
+}
+return sum;
+}
+int main()
+{
+string type, name;
+int memory, number;
+cin>>type>>memory>>name>>number;
+Phone p1(type, memory, name, number);
+cin>>type>>memory>>name>>number;
+Phone p2(type, memory, name, number);
+cout<<"first object information:"<<endl;
+p1.print();
+//cout<<endl;
+cout<<"second object information:"<<endl;
+p2.print();
+//cout<<endl;
+bool x = p1.hasMoreMemory(p2);
+if(x)
+cout<<"first object has more memory than second object"<<endl;
+else
+cout<<"second object has more memory than first object"<<endl;
+int v = SumOfDigits(p1);
+cout<<"The sum of digits of the first object card number = "<<v<<endl;
+ return 0;
+}
