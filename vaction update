@@ -1,0 +1,10 @@
+#include<iostream>
+using namespace std;
+int main(){
+  int a,b;
+  cin >> a;
+ 
+   cin >> b;
+    cout <<"for group number " << i << " the total cost is " << b*50 << endl;
+  
+}
