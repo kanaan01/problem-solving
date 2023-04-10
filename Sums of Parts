@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class SumParts
+{
+    public static int[] PartsSums(int[] ls)
+    {
+      var Result = new List<int>();
+      Result.Add(ls.Sum());
+      var sum = ls.Aggregate(0 , (a,b) => a+b);
+      for(var i=0;i<ls.Length;i++)
+      {
+        sum-= ls[i];
+        Result.Add(sum);
+      }
+      return Result.ToArray();
+    }
+}
