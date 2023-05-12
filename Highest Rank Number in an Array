@@ -1,0 +1,32 @@
+using System.Collections.Generic;
+
+public class Kata
+  
+{
+  public static int HighestRank(int[] arr)
+{
+    Dictionary<int, int> counts = new Dictionary<int, int>();
+    int maxCount = 0;
+    int maxNum = int.MinValue;
+
+    foreach (int num in arr)
+    {
+        if (counts.ContainsKey(num))
+        {
+            counts[num]++;
+        }
+        else
+        {
+            counts[num] = 1;
+        }
+
+        if (counts[num] > maxCount || (counts[num] == maxCount && num > maxNum))
+        {
+            maxCount = counts[num];
+            maxNum = num;
+        }
+    }
+
+    return maxNum;
+}
+}
